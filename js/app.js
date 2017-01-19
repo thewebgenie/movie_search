@@ -5,16 +5,15 @@ $('.search-form').submit(function (evt) {
     var movieSearchTerm = $('#search').val();
     var searchData = {
         t:movieSearchTerm,
-        format: json
+        // format:json
     }
     function displayMovies(data) {
         // body...
         var movieHTML = '<li>';
         $.each(data.items,function(i,movie) {
         movieHTML += '<li class="desc">';
-        movieHTML += 
-        movieHTML += '<a href="' + movie.link + '" class="image">';
-        movieHTML += '<img src="' + movie.media.Poster + '"></a></li>';
+        movieHTML += '<a href="' + movie.link + '" class="title">';
+        movieHTML += '<img src="' + movie.Poster + '"></a></li>';
       }); // end each
       movieHTML += '</ul>';
       $('#movies').html(movieHTML);

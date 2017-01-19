@@ -2,11 +2,11 @@ $('.search-form').submit(function (evt) {
     // body...
     evt.preventDefault();
     var $searchBar = $('#search');
-    var omdbApi = 'https://www.omdbapi.com/?';
+    var omdbApi = 'http://www.omdbapi.com/?';
     var movieSearchTerm = $searchBar.val();
     var searchData = {
         s:movieSearchTerm,
-        // r:json
+        r:json
 };   
     function displayMovies(data) {
         // for each search result

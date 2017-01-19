@@ -1,26 +1,29 @@
 $('.search-form').submit(function (evt) {
     // body...
     evt.preventDefault();
+    var $searchBar = $('#search');
     var omdbApi = 'http://www.omdbapi.com/?';
-    var movieSearchTerm = $('#search').val();
+    var movieSearchTerm = $searchBar.val();
     var searchData = {
-        t:movieSearchTerm,
-        // format:json
-    }
+        s:movieSearchTerm,
+        r:json
+};   
     function displayMovies(data) {
-        // body...
-        var movieHTML = '<li>';
+        // for each search result
         $.each(data.items,function(i,movie) {
         movieHTML += '<li class="desc">';
-        movieHTML += '<a href="' + movie.link + '" class="title">';
-        movieHTML += '<img src="' + movie.Poster + '"></a></li>';
+        //movie title
+        movieHTML += '<a href="' + movie.Title + '" class="movie-title">';
+        //release year
+        movieHTML += '<a href="' + movie.Year + '" class="movie-year">';
+        //poster
+        movieHTML += '<img src="' + movie.Poster + '" class="movie-poster"></li>';
+        $('#movies').html(movieHTML);
       }); // end each
-      movieHTML += '</ul>';
-      $('#movies').html(movieHTML);
+      // movieHTML += '</li>'; 
     }
     $.getJSON(omdbApi, searchData, displayMovies);
 });//end submit
-
 
 // !function ($) {
 //     $(function () {
